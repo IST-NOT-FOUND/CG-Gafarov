@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Лабораторная 4</title>
+        <meta charset="utf-8">
+        <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    
+    </head>
+    <body>
+        <ol>
+            <li><a href="../../index.html">Домой</a></li>
+            <li><a href="index.html">Лабораторная 4</a></li>
+            <li>Разноцветный куб</li>
+        </ol>
+        
+        <div class="container text-center">
+            <canvas id="canvas3D" width="400" height="300">Your browser doesn't support canvas</canvas>
+        </div>
+        <script id="shader-fs" type="x-shader/x-fragment">
+            varying highp vec4 vColor;
+            void main(void) {
+                gl_FragColor = vColor;
+            }
+        </script>
+        <script id="shader-vs" type="x-shader/x-vertex">
+            attribute vec3 aVertexPosition;
+            attribute vec3 aVertexColor;
+            varying highp vec4 vColor;
+            uniform mat4 uMVMatrix;
+            uniform mat4 uPMatrix;
+            void main(void) {
+                gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+                vColor = vec4(aVertexColor, 1.0);
+            }
+        </script>
+        <script src="../../node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
+        <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../js/gl-matrix-min.js" type="text/javascript"></script>
+        <script src="../Лабы js/Лабы/4/Разноцветный куб.html" type="text/javascript"></script>
+    </body>
+</html>
